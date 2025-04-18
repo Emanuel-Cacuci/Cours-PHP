@@ -1,6 +1,5 @@
 <?php
 
-include_once "../cours-php/pages/12CRUD/view/01create.php";
 
 // Comment founctionne $_POST :
 // $_POST=[
@@ -31,4 +30,5 @@ if($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['ajouter'])){
 
     
 }
+include_once "view/01create.php";
 ?>

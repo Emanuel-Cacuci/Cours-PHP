@@ -1,17 +1,15 @@
+<div class="box">
 <?php
-// DELETE - Suppression d'un élève
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["sup"], $_POST['id'])) {
-    $isUserSup = (int) $_POST['id']; // On caste l'ID en entier par sécurité
- 
-    $stmt = $pdo->prepare("DELETE FROM eleves WHERE id = :id");
-    $stmt->execute([':id' => $isUserSup]);
- 
-    // On vérifie si une ligne a bien été supprimée
-    if ($stmt->rowCount() > 0) {
-        echo "<p style='color:green;'>✅ Élève ID {$isUserSup} supprimé avec succès.</p>";
-    } else {
-        echo "<p style='color:red;'>❌ Aucun élève supprimé. ID inexistant ?</p>";
-    }
-}
-
+// !-- Formulaires de suppression pour chaque élève
 ?>
+<h2>Supprimer un élève</h2>
+<?php foreach ($eleves as $e): ?>
+    <form method="POST" style="display:inline">
+        ID: <?= $e['id'] ?> - Nom: <?= $e['nom'] ?> - PC: <?= $e['ordinateur_numero'] ?>
+        <input type="hidden" name="id" value="<?= $e['id'] ?>">
+        <input type="submit" name="sup" value="Supprimer">
+    </form><br>
+<?php endforeach; ?>
+</body>
+</html>
+</div>

@@ -1,6 +1,6 @@
 <?php
 
-require_once "../cours-php/pages/12CRUD/config/bdd.php"
+require_once "./config/bdd.php"
 
 ?>
 
@@ -36,10 +36,10 @@ require_once "../cours-php/pages/12CRUD/config/bdd.php"
 <?php
 
 // Inclusion des contrôleurs CRUD
-include_once "../cours-php/pages/12CRUD/controller/01createController.php";
-include_once "../cours-php/pages/12CRUD/controller/02readController.php";
-include_once "../cours-php/pages/12CRUD/controller/03updateController.php";
-include_once "../cours-php/pages/12CRUD/controller/04deleteController.php";
+include_once "controller/01createController.php";
+include_once "controller/02readController.php";
+include_once "controller/03updateController.php";
+include_once "controller/04deleteController.php";
 
 ?>
 
