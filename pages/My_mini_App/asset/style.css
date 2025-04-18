@@ -1,0 +1,36 @@
+header {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(181, 138, 230);
+}
+
+li {
+    list-style: none;
+    /* display: flex; */
+    justify-content: space-around;
+}
+
+.co {
+    color: rgb(239, 232, 217);
+}
+
+.in {
+    color: rgb(239, 232, 217);
+}
+
+ul {
+    display: flex;
+    margin-left: 70%;
+    gap: 1.5rem;
+}
+
+.logo {
+    margin-top: 1rem;
+    width: 2;
+    height: 2rem;
+    display: flex;
+    margin-left: 1rem;
+    
+    
+    
+}
