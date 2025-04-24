@@ -298,7 +298,7 @@ class Livre
     private string $auteur;
     private int $annee;
     private bool $disponible;
-    private int $nombreEmprunts = 0;
+    private int $nombreEmprunts = 0; 
 
     public function __construct($a, $b, $c, $d)
     {
@@ -441,6 +441,166 @@ echo $livre3->getNombreEmprunts();
 $livre2->setNombreEmprunts(800);
 echo $livre2->getNombreEmprunts();
 
+?>
+
+<h4>EXERCICE 7 : Classe JoueurDeBasket</h4>
+
+<?php
+
+class JoueurDeBasket{
+    private string $nom;
+    private int $numero;
+    private int $point_marques;
+    public function __construct(string $a, int $b){
+
+        $this->nom = $a;
+        $this->numero = $b;
+        $this->point_marques=0;
+    }
+
+    public function getPoint(): int
+    {
+        return $this->point_marques;
+    }
+
+    public function marquerPoints(int $nb): void{
+        $this->point_marques += $nb;
+        // $his->poits_marques += $nb;
+
+    }
+
+    public function getStatistique(){
+        return "Le joueur $this->nom avec le maillot $this->numero à marque $this->point_marques points";
+    }
+
+}
+
+$joueur1=new JoueurDeBasket("Sekene", 4);
+$joueur2=new JoueurDeBasket("Emanuel", 3);
+
+// echo $joueur1->nom;
+echo $joueur1->getStatistique();
+
+$joueur1->marquerPoints(3);
+echo "<br>";
+echo $joueur1->getStatistique();
+
+echo $joueur1->marquerPoints(5);
+echo "<br>";
+
+echo $joueur1->getStatistique();
+
+$joueur2->marquerPoints(10);
+echo "<br>";
+echo $joueur1->getPoint();
+echo "<br>";
+echo $joueur2->getPoint();
+
+function totalPoint(int $a, int $b){
+
+   echo $a+$b;
+
+}
+
+$emanuel=$joueur2->getPoint();
+echo " ";
+$sekene=$joueur1->getPoint();
+
+totalPoint($emanuel, $sekene);
+
+?>
+
+<h4>EXERCICE 8 : Classe ProduitEnStock</h4>
+
+<?php
+
+class ProduitEnStock{
+    private string $nom_du_produit;
+    private int $quantite_en_stock;
+    private float $prix_unitaire;
+
+    public function __construct(string $a, int $b, float $c){
+
+        $this->nom_du_produit = $a;
+        $this->quantite_en_stock = $b;
+        $this->prix_unitaire = $c;
+    }
+
+    public function ajouterStock(int $nb):?int{
+
+   if($nb >0){
+   return $this->quantite_en_stock += $nb;
+    // $this->quantite_en_stock = $this->quantite_en_stock + $nb
+
+   }else{
+    return null;
+   }
 
 
+    }
+
+    public function valeurStock(){
+        
+        return "La quantite est : $this->quantite_en_stock et le prix est : $this->prix_unitaire euros la valeur c'est :  <br>" . $this->quantite_en_stock * $this->prix_unitaire . "€<br>";
+
+        // return round($this->quantite_en_stock * $this->prix_unitaire, 2);
+
+    }
+}
+
+$produit1=new ProduitEnStock("Livre", 6, 7);
+
+echo $produit1->valeurStock();
+
+$produit1->ajouterStock(20);
+echo "<br>";
+echo $produit1->valeurStock();
+
+?> 
+
+<?php
+// class ProduitEnStock
+// {
+//     private string $nom;
+//     private int $quantite;
+//     private float $prix;
+ 
+//     public function __construct(string $nom, int $quantite, float $prix){
+ 
+//         $this->nom = $nom;
+//         $this->quantite = $quantite;
+//         $this->prix = $prix;
+//     }
+ 
+//     public function ajouterStock(int $nb):string|int   { // typage d'union soit c'est un string soit c'est un int
+ 
+//         if($nb >0){
+//             return $this->quantite += $nb;
+//             // $this->quantite=$this->quantite+$nb;
+ 
+//         }else{
+//             return "le nombre doit etre positif";
+//         }
+     
+ 
+//     }
+ 
+//     public function valeurStock():float {
+ 
+//         echo "<br>";
+//         echo "le produit $this->nom a un stock de $this->quantite unités et un prix unitaire de $this->prix €";
+//         echo "<br>";
+//         return round($this->quantite * $this->prix,2) ;
+ 
+ 
+//     }
+// }
+ 
+// $produit1 = new ProduitEnStock("chaussure", 10, 50);
+// $produit1->valeurStock();
+// echo "<br>";
+// echo $produit1->ajouterStock(5);
+// echo "<br>";
+ 
+// echo $produit1->ajouterStock(-5);
 ?>
