@@ -604,3 +604,284 @@ echo $produit1->valeurStock();
  
 // echo $produit1->ajouterStock(-5);
 ?>
+
+<?php
+
+echo "<h1>🧪 Exercices PHP – Programmation Orientée Objet</h1>";
+
+?>
+
+<h4>Exercice 9 : Classe simple + constructeur</h4>
+
+<?php
+
+class Utilisateur{
+    private string $nom;
+    private string $email;
+
+    public function __construct(string $nom, string $email){
+
+        $this->nom = $nom;
+        $this->email = $email;
+    }
+
+    public function afficherProfil(){
+
+        return "Ton nom est: $this->nom et ton mail est : $this->email";
+    }
+
+    }
+
+    $utilisateur=new Utilisateur("David", "david@gmail.com");
+    echo $utilisateur->afficherProfil();
+
+
+?>
+
+
+<h4>Exercice 10 : Getters et Setters</h4>
+
+<?php
+
+class Produit{
+
+    private $prix=0;
+
+    public function __construct(float $prix){
+
+        $this->prix = $prix;
+    }
+
+    public function getPrix(){
+        
+        return $this->prix;
+    }
+
+    public function setPrix($a): void{
+        
+        $this->prix = $a;
+        echo "Le prix actuel est: $a €";
+    }
+   
+}
+
+$prix1=new Produit(0);
+
+$prix1->getPrix();
+echo $prix1->setPrix(20);
+
+?>
+
+
+<h4>Exercice 11 : Héritage simple</h4>
+
+<?php
+
+class Vehicule{
+
+    public function rouler(){
+        echo "Je roule <br>";
+    }
+
+}
+    class Voiture1 extends Vehicule{
+
+        public function klaxonner(){
+
+            echo "Je Klaxonne";
+        }
+    }
+
+$voiture1=new Voiture1();
+$voiture1->rouler();
+$voiture1->Klaxonner();
+
+
+?>
+
+
+<h4>Exercice 12 : Redéfinir une méthode (override)</h4>
+
+<?php
+
+class Animal1{
+
+    public function parler(): void{
+        echo "Je fait un bruit <br>";
+    }
+}
+
+class Chat extends Animal1{
+
+    public function parler(): void{
+
+        echo "Miaou";
+    }
+
+}
+$animal1=new Animal1();
+$animal1->parler();
+
+$chat=new Chat();
+$chat->parler();
+
+
+?>
+
+
+<h4>Exercice 13 : Utiliser parent:: dans une redéfinition</h4>
+
+<?php
+
+class Animal2{
+
+    public function parler(): void{
+        echo "Je fait un bruit <br>";
+    }
+}
+
+class Chien extends Animal1{
+
+    public function parler(): void{
+        parent::parler();
+
+        echo "et j'aboye";
+    }
+
+
+
+}
+
+$chat=new Chien();
+$chat->parler();
+
+
+?>
+
+
+<h4>Exercice 14 : Classe abstraite</h4>
+
+<?php
+
+abstract class Forme{
+
+    abstract public function afficherNom();
+}
+
+class Cercle extends Forme{
+
+     public function afficherNom(): void{
+     echo "Je suis un cercle <br>";
+     }
+} 
+
+class Carre extends Forme{
+      public function afficherNom(): void{
+      echo "Je suis un carre";
+   }
+}
+
+$cercle=new Cercle();
+$cercle->afficherNom();
+
+$carre=new Carre();
+$carre->afficherNom();
+
+
+?>
+
+
+<h4>Exercice 15 : Propriété protégée</h4>
+
+<?php
+
+abstract class Compte{
+
+    protected $solde;
+
+    public function __construct($solde) {
+         $this->solde = $solde;
+    }
+    public function deposer($a){
+        if($a>0){
+            return " Le solde est de : " .$this->solde += $a ;
+    }else{
+            echo "Error : votre depot est negatif";
+        }
+    }
+}
+
+class CompteCourant extends Compte{
+
+    public function getdepot($a){
+        return  $this->deposer($a) ."
+";
+    }
+}
+
+$compte1 = new CompteCourant(100);
+echo $compte1->getdepot(1000);
+ 
+
+?>
+
+
+<h4>Exercice 16 : Méthode</h4>
+
+<?php
+
+
+?>
+
+
+<h4>Exercice 17 : Encapsulation complète</h4>
+
+<?php
+
+class Banque{
+
+    private string $nomClient;
+    private float $solde;
+
+    public function __construct(string $nomClient, float $solde)
+    {
+        $this->nomClient = $nomClient;
+        $this->solde =$solde;
+    }
+
+    public function getNomClient() : string{
+        return $this->nomClient;
+    }
+
+    public function getSolde() : float{
+        return $this->solde;
+    }
+
+    public function setSolde(float $solde) : float{
+        return $this->solde = $solde;
+    }
+
+    public function setNomclient(string $nomClient) : string{
+        return $this->nomClient = $nomClient;
+    }
+
+    public function transfert(Banque $destinataire, float $montant){ // ici je fait un typage d'objet Banque, je demande un objet issu de banque-
+
+        if($montant > 0 && $this->solde >= $montant){
+            $this->solde -= $montant;
+            $destinataire->solde += $montant;
+        }else{
+            echo "Solde insuffisant";
+        }
+    }
+}
+
+$compte1=new Banque("Najiba", 150000);
+$compte2=new Banque("Facundo", 2);
+echo $compte2->getSolde(). "<br>";
+echo $compte1->getSolde(). "<br>";
+$compte1->transfert($compte2, 100000);
+echo $compte2->getSolde(). "<br>";
+echo $compte1->getSolde(). "<br>";
+
+?>
